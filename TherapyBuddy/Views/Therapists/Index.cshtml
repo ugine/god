@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TherapyBuddy.Models.Therapist>
+
+
+<h2>Therapists</h2>
+    @{
+    ViewBag.Title = "Index";
+        }
+<p>
+    @Html.ActionLink("Register New Therapist", "AdminRegisterTherapist", "Account")
+
+    @{
+ string message = TempData["Message"] as string;
+ if (!String.IsNullOrEmpty(message))
+ {
+ <div class="message">
+ <center><h4 class="text-danger">@message</h4></center>
+ </div>
+ }
+ }
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Role
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TherapistID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TherapistID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TherapistID })
+        </td>
+    </tr>
+}
+
+</table>

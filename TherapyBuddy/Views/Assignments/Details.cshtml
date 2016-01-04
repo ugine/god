@@ -1,0 +1,42 @@
+﻿@model TherapyBuddy.Models.Assignment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Assignment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.Patient_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Patient_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Therapist.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Therapist.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Assigned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Assigned)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AssignmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model TherapyBuddy.Models.ExerciseInstruction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ExerciseInstruction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Assignment.AssignmentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assignment.AssignmentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Number_Of_Reps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number_Of_Reps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Frequency_Per_Day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Frequency_Per_Day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reps_Completed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reps_Completed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExerciseInstructionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

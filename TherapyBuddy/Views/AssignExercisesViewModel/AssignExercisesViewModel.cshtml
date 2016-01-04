@@ -1,0 +1,79 @@
+﻿@model List<TherapyBuddy.Models.AssignExercisesViewModel>
+
+
+<div style="width:1200px; padding:5px; background-color:white;">
+@using (Html.BeginForm("BulkData", "Save", FormMethod.Post))
+{
+    <h4>Assignment @ViewBag.PatientName</h4>
+    <hr />
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div><a href="#" id="addNew">Add New</a></div>
+    <table id="dataTable" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Exercise Region</th>
+            <th>Exercise Type</th>
+            <th>Exercise</th>
+            <th>Number Of Reps</th>
+            <th>Frequency Per Day</th>
+            <th>Remark</th>
+            <th></th>
+        </tr>
+        @if (Model != null && Model.Count > 0)
+        {
+            int j = 0;
+            foreach (var i in Model)
+            {
+                <tr style="border:1px solid black">
+                    <td>@Html.DropDownListFor(model => model[j].ExerciseRegionID, new SelectList(ViewBag.ExerciseRegion, "ExerciseRegionID", "Name"), "Select an Exercise Region")</td>
+                    <td>@Html.DropDownListFor(model => model[j].ExerciseTypeID, new SelectList(ViewBag.ExerciseType, "ExerciseTypeID", "Name"), "Select an Exercise Type")</td>
+                    <td>@Html.DropDownListFor(model => model[j].ExerciseID, new SelectList(ViewBag.Exercises, "ExerciseID", "Name"), "Select an Exercise")</td>
+                    <td>@Html.EditorFor(model => model[j].Number_Of_Reps)</td>
+                    <td>@Html.EditorFor(model => model[j].Frequency_Per_Day)</td>
+                    <td>@Html.TextAreaFor(model => model[j].Remark)</td>
+                    <td>
+                        @if  (j > 0)
+                        {
+                            <a href="#" class="remove">Remove</a>
+                        }
+                    </td>
+                </tr>
+                j++;
+            }
+        }
+    </table>
+    <br/>
+    <input type="submit" value="Save All"/>
+}
+
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script language="javascript">
+        $(document).ready(function () {
+            //1. Add new row
+            $("#addNew").click(function (e) {
+                e.preventDefault();
+                var $tableBody = $("#dataTable");
+                var $trLast = $tableBody.find("tr:last");
+                var $trNew = $trLast.clone();
+                var suffix = $trNew.find(':input:first').attr('name').match(/\d+/);
+                $trNew.find("td:last").html('<a href="#" class="remove">Remove</a>');
+                $trLast.after($trNew);
+
+                // Re-assign Validation
+                var form = $("form")
+                    .removeData("validator")
+                    .removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(form);
+            });
+
+            // 2. Remove
+            $('a.remove').live("click", function (e) {
+                e.preventDefault();
+                $(this).parent().parent().remove();
+            });
+
+        });
+    </script>
+}

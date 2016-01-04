@@ -1,0 +1,51 @@
+﻿@model TherapyBuddy.Models.ExerciseViewModel
+
+<div>
+    <h4>ExerciseViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Exercise Region
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExerciseRegion.Name)
+        </dd>
+
+        <dt>
+            Exercise Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExerciseType.Name)
+        </dd>
+
+        <dt>
+            Exercise
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Exercise)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </dt>
+
+        <dd>
+            NIL
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

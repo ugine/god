@@ -1,0 +1,66 @@
+﻿@model TherapyBuddy.Models.Exercise
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Patient's Assignment</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Assignment Number", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--@Html.LabelFor(model => model.Name, (string)@ViewBag.exerciseName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Value = ViewBag.assignment, @class = "form-control", disabled= "disabled" } })
+            </div>
+        </div>
+         <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Assigned By", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--@Html.LabelFor(model => model.Name, (string)@ViewBag.exerciseName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Value = ViewBag.therapist, @class = "form-control", disabled= "disabled" } })
+            </div>
+        </div>
+         <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Exercise Category", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--@Html.LabelFor(model => model.Name, (string)@ViewBag.exerciseName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Value = ViewBag.cat, @class = "form-control", disabled= "disabled" } })
+            </div>
+        </div>
+         <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Exercise Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--@Html.LabelFor(model => model.Name, (string)@ViewBag.exerciseName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Value = ViewBag.exerciseName, @class = "form-control", disabled= "disabled" } })
+            </div>
+        </div>
+         <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Number of Reps", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--@Html.LabelFor(model => model.Name, (string)@ViewBag.exerciseName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Value = ViewBag.Number_Of_Reps, @class = "form-control", disabled= "disabled" } })
+            </div>
+        </div>
+         <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Frequency per Day", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--@Html.LabelFor(model => model.Name, (string)@ViewBag.exerciseName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Value = ViewBag.Frequency_Per_Day, @class = "form-control", disabled= "disabled" } })
+            </div>
+        </div>
+         <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Notes", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--@Html.LabelFor(model => model.Name, (string)@ViewBag.exerciseName, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Value = ViewBag.Remark, @class = "form-control", disabled= "disabled" } })
+            </div>
+        </div>
+       <iframe width="560" 
+                height="315" 
+                src="@ViewBag.ev"
+                frameborder="0" 
+                allowfullscreen></iframe>
+    </div>
+}

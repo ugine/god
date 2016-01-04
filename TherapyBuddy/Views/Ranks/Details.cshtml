@@ -1,0 +1,42 @@
+﻿@model TherapyBuddy.Models.Rank
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rank</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Rank Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rank_Name)
+        </dd>
+
+        <dt>
+            Minimum points
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Min_Point)
+        </dd>
+
+        <dt>
+           Maximum Points
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Max_Point)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RankID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

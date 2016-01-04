@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="background-color:#A9F5D0">
+    @{
+    string message = TempData["Message"] as string;
+    if (!String.IsNullOrEmpty(message))
+    {
+    <div class="message">
+        <center><p class="text-danger">@message</p></center>
+    </div>
+    }
+    }
+    <h1 style="color:#000000">GET MOTIVATED TODAY!</h1>
+    <p class="lead" style="color:#000000; font-style:normal">Therapy Buddy will guide you in performing your rehabilitation exercises in the comfort of your own home.</p>
+    </br>
+    <p><a href='@Url.Action("PatientRegister", "Account")' class="btn btn-danger">Get Started &raquo;</a></p>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Tip of the Day</h2>
+        <p>
+            The days of 'No Pain No Gain' are gone. If it hurts to do exercise, then it is the bodies way of saying I shouldn't be doing it that hard.
+            Physical activity is good for the mind, body and soul. Daily exercise will boost your fitness, mood and decrease stress level.
+        </p>
+        <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>-->
+    </div>
+    <div class="col-md-4">
+        <h2>Rehabilitation</h2>
+        <p>
+            With Therapy Buddy, you will be able to have a better rehabilitation experience and at the same time,
+            have better understanding of your own rehabilitation.
+        </p>
+        <!--<p><a class="btn btn-default" href="https://www.youtube.com/user/rehabhealthlibrary?gl=SG&hl=en-GB">View Videos &raquo;</a></p>-->
+    </div>
+    <div class="col-md-4">
+        <h2>Health Library</h2>
+        <p>Choose from our wide range of exercise videos at no cost! The videos include Hands, Legs and Back exercises.</p>
+        <p><a class="btn btn-default" href="https://www.youtube.com/user/rehabhealthlibrary?gl=SG&hl=en-GB">View Videos &raquo;</a></p>
+    </div>
+</div>

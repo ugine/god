@@ -1,0 +1,98 @@
+﻿@model IEnumerable<TherapyBuddy.Models.PublicModule>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rehabilitation Videos</h2>
+
+       
+       <div class="form-group">
+            <div class="col-md-5">
+                <p>Region</p>
+                @Html.DropDownList("ExerciseRegions", (SelectList)ViewBag.ExerciseRegion, "Select one...",htmlAttributes: new { @class = "form-control", @id="region"})
+            </div>
+            <div class="col-md-5">
+                <p>Type</p>
+                @Html.DropDownList("ExerciseTypes", (SelectList)ViewBag.ExerciseArea, "Select one...",htmlAttributes: new { @class = "form-control", @id="type"})
+            </div>
+            <input type='button' value='Search' class="btn btn-default" onclick="selectList()" />
+
+       </div>
+
+        
+<table class="table" id="TempTable">
+    <tr>
+        <th>
+            Video URL
+        </th>
+        <th>
+            Exercise Type
+        </th>
+        <th>
+            Exercise Name
+        </th>
+        <th>
+            Exercise Region
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <div class="form-group">
+                <iframe width="300" height="185" src=@item.VideoURL frameborder="0" allowfullscreen></iframe>
+            </div>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExerciseType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExerciseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExerciseRegion)
+        </td>
+
+    </tr>
+
+}
+</table>
+
+
+<script type="text/javascript">
+    function selectList() {            
+        var exerRegionID = $("#region").val();           
+        var exerTypeID = $("#type").val();
+        $.ajax({
+            url: '@Url.Action("retrieveBySelected", "PublicModules")',
+            data: { "exerciseRegionID": exerRegionID, "exerciseTypeID": exerTypeID },
+            dataType: 'json',
+            success: function (data) {
+                var html = '';
+                if (data.VideoURL != null) {
+                    html = '';
+                    html += '\
+                            <tr><th>Video URL</th>\
+                                <th>Exercise Type</th>\
+                                <th>Exercise Name</th>\
+                                <th>Exercise Region</th></tr>\
+                            <tr><td><div class="form-group"><iframe width="300" height="175" src='+ data.VideoURL + ' frameborder="0" allowfullscreen></iframe></div></td>\
+                            <td>' + data.ExerciseType + '</td>\
+                            <td>' + data.ExerciseName + '</td>\
+                            <td>' + data.ExerciseRegion + '</td>\
+						    </tr>'
+                    console.log(data.ExerciseType);
+                    $("#TempTable").html(html);
+                } else {
+                    html = '<H2>No Videos Available</H2>';
+                    $("#TempTable").html(html);
+                }
+            },
+            error: function (err) {
+                alert("error");
+            }
+        });
+    }
+</script>

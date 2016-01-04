@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TherapyBuddy.Models.Patient>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <h2>Patients</h2>
+    <a href='@Url.Action("TherapistRegisterPatient", "Account")'>
+     <input type='button' value='Register Patient' class="btn btn-default"/></a>
+</div>
+        @{
+ string message = TempData["Message"] as string;
+ if (!String.IsNullOrEmpty(message))
+ {
+ <div class="message">
+ <center><p class="text-danger">@message</p></center>
+ </div>
+ }
+ }
+    <br />
+<table class="table">
+    <tr>
+        <th>
+            Patient Email
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient_Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.ActionLink("Prescribe Exercise", "AssignExercisesViewModel", new { pid = item.PatientID })
+        </td>
+    </tr>
+}
+
+</table>

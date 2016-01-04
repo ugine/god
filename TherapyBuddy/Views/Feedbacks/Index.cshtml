@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TherapyBuddy.Models.Feedback>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Feedbacks</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Recipient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Sent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasReplied)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recipient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Sent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasReplied)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.FeedbackID })
+        </td>
+    </tr>
+}
+
+</table>

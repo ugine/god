@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Web Camera Launch";
+}
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.webcam.js")">
+    </script>
+    <script>
+        $("#Camera").webcam({
+             width: 1180,
+             height: 518,
+             mode: "save",
+             swffile: "@Url.Content("~/Scripts/jscam.swf")",
+             onTick: function () { },
+             onSave: function () {
+             },
+             onCapture: function () {
+                 webcam.save("@Url.Content("~/Home/Capture")/");
+             },
+             debug: function () { },
+             onLoad: function () { }
+         });
+    </script>
+}
+<h2>Web Cam</h2>
+<input type="button" value="Shoot!" onclick="webcam.capture();" />
+<div id="Camera"></div>

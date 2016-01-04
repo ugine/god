@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TherapyBuddy.Models.ExerciseVideo>
+
+@{
+ ViewBag.Title = "Index";
+}
+
+<h2>Exercise Videos</h2>
+
+<p>
+ @Html.ActionLink("Create New Exercise Video", "Create")
+</p>
+<table class="table">
+ <tr>
+ <th>
+ @Html.DisplayNameFor(model => model.Exercise.Name)
+ </th>
+ <th>
+ Video URL
+ </th>
+ <th></th>
+ </tr>
+
+@foreach (var item in Model) {
+ <tr>
+ <td>
+ @Html.DisplayFor(modelItem => item.Exercise.Name)
+ </td>
+ <td>
+ @Html.DisplayFor(modelItem => item.VideoURL)
+ </td>
+ <td>
+ @Html.ActionLink("Edit", "Edit", new { id=item.ExerciseVideoID }) |
+ @Html.ActionLink("Details", "Details", new { id=item.ExerciseVideoID }) |
+ @Html.ActionLink("Delete", "Delete", new { id=item.ExerciseVideoID })
+ </td>
+ </tr>
+}
+
+</table>

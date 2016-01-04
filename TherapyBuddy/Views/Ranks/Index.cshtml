@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TherapyBuddy.Models.Rank>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rank</h2>
+
+<p>
+    @Html.ActionLink("Create New Rank", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Rank Name
+        </th>
+        <th>
+           Minimum points
+        </th>
+        <th>
+            Maximum Points
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rank_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Min_Point)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Max_Point)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RankID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RankID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RankID })
+        </td>
+    </tr>
+}
+
+</table>
